@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notarization History</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container wide">
+    <h1>Notarization History</h1>
+
+    <div id="loading-section">
+      <div class="spinner"></div>
+      <p>Loading notarizations...</p>
+    </div>
+
+    <div id="empty-section" class="hidden">
+      <div class="empty-state">
+        <p>No notarizations yet.</p>
+        <a href="/" class="btn">Create your first notarization</a>
+      </div>
+    </div>
+
+    <div id="list-section" class="hidden">
+      <p id="count-label" class="count-label"></p>
+      <div id="notarization-list"></div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="/">Notarize</a>
+      <a href="/verify">Verify</a>
+    </nav>
+  </div>
+
+  <script src="/js/history.js"></script>
+</body>
+</html>

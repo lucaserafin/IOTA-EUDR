@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify EUDR Claim</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Verify EUDR Claim</h1>
+
+    <div id="search-section">
+      <form id="verify-form">
+        <div class="form-group">
+          <label for="notarizationId">Enter Notarization ID</label>
+          <input type="text" id="notarizationId" name="notarizationId" required placeholder="0x4a8c9b2f...">
+        </div>
+        <button type="submit">Verify</button>
+      </form>
+    </div>
+
+    <div id="loading-section" class="hidden">
+      <div class="spinner"></div>
+      <p>Verifying on IOTA...</p>
+    </div>
+
+    <div id="result-section" class="hidden">
+      <div id="result-card"></div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="/">Notarize</a>
+      <a href="/history">History</a>
+    </nav>
+  </div>
+
+  <script src="/js/verify.js"></script>
+</body>
+</html>

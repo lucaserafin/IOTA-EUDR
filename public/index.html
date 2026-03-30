@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EUDR Notarizer</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>EUDR Deforestation-Free Notarizer</h1>
+
+    <div id="form-section">
+      <form id="notarize-form">
+        <div class="form-group">
+          <label for="parcel_id">Parcel ID</label>
+          <input type="text" id="parcel_id" name="parcel_id" required placeholder="PCL-2025-001">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="latitude">Latitude</label>
+            <input type="number" id="latitude" name="latitude" step="any" required placeholder="1.2345">
+          </div>
+          <div class="form-group">
+            <label for="longitude">Longitude</label>
+            <input type="number" id="longitude" name="longitude" step="any" required placeholder="-5.6789">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="commodity">Commodity</label>
+          <select id="commodity" name="commodity" required>
+            <option value="cocoa">Cocoa</option>
+            <option value="coffee">Coffee</option>
+            <option value="palm_oil">Palm Oil</option>
+            <option value="soy">Soy</option>
+            <option value="wood">Wood</option>
+            <option value="rubber">Rubber</option>
+            <option value="cattle">Cattle</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="area_hectares">Area (hectares)</label>
+          <input type="number" id="area_hectares" name="area_hectares" step="0.01" min="0.01" required placeholder="12.5">
+        </div>
+
+        <div class="form-group">
+          <label for="assessment_date">Assessment Date</label>
+          <input type="date" id="assessment_date" name="assessment_date" required>
+        </div>
+
+        <div class="form-group checkbox">
+          <label>
+            <input type="checkbox" id="declaration" required>
+            I declare this parcel is deforestation-free since December 31, 2020
+          </label>
+        </div>
+
+        <button type="submit" id="submit-btn">Notarize on IOTA</button>
+      </form>
+    </div>
+
+    <div id="loading-section" class="hidden">
+      <div class="spinner"></div>
+      <p>Notarizing on IOTA...</p>
+    </div>
+
+    <div id="result-section" class="hidden">
+      <div class="success-card">
+        <h2>Successfully Notarized!</h2>
+
+        <div class="result-details">
+          <div class="detail-row">
+            <span class="label">Parcel ID:</span>
+            <span id="result-parcel"></span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Commodity:</span>
+            <span id="result-commodity"></span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Claim Hash:</span>
+            <span id="result-hash" class="mono"></span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Notarization ID:</span>
+            <span id="result-notarizationid" class="mono"></span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Timestamp:</span>
+            <span id="result-timestamp"></span>
+          </div>
+        </div>
+
+        <div class="qr-section">
+          <img id="result-qr" alt="QR Code">
+          <p>Scan to verify</p>
+        </div>
+
+        <div class="actions">
+          <button onclick="copyLink()">Copy Verification Link</button>
+          <a id="explorer-link" href="#" target="_blank" class="btn">View on Explorer</a>
+        </div>
+
+        <button onclick="resetForm()" class="secondary">Notarize Another</button>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="/verify">Verify</a>
+      <a href="/history">History</a>
+    </nav>
+  </div>
+
+  <script src="/js/notarize.js"></script>
+</body>
+</html>
