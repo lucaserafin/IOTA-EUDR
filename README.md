@@ -84,3 +84,19 @@ IOTA Blockchain (Devnet)
    Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 > **Note:** On devnet the app automatically requests gas from the IOTA faucet, so no tokens are needed to try it out.
+
+## 🔭 Next Steps
+
+### 1. Geospatial Verification of Parcel Coordinates
+
+Currently the system notarizes coordinates as provided by the operator without independent validation. A critical improvement would be to verify, before notarization, that the submitted GPS coordinates actually correspond to non-deforested land. This could be achieved by integrating satellite-based land cover datasets (e.g. Global Forest Watch, Hansen Tree Cover Loss, or Copernicus) into the backend pipeline: before hashing and submitting the claim, the server would cross-reference the parcel polygon against the deforestation reference layer and reject or flag claims that overlap with areas of detected forest loss after December 31, 2020. This turns the system from a passive notary into an active compliance gate, significantly raising the bar against fraudulent submissions.
+
+### 2. Multi-Step Production Chain Traceability
+
+The current model notarizes a single parcel-level claim at import time. A more complete EUDR compliance picture requires tracking the commodity through subsequent processing and refining steps — for example: raw coffee cherry harvested → green coffee exported → roasted coffee produced. Each of these steps should be anchored on-chain as a **child notarization block** linked back to the original parcel block, forming a traceable chain of custody within a company's internal processes. Concretely, this means:
+
+- Extending the data model to include a `parent_notarization_id` field, so each new processing step references the previous block.
+- Exposing a "Add processing step" UI flow that loads an existing notarization and appends a new linked record (transformation type, location, date, operator).
+- Displaying the full lineage as a timeline on the verification page, so regulators and buyers can follow the product from field to shelf in a single audit trail.
+
+This approach mirrors how IOTA's object model naturally supports object relationships and would make the notarizer a full supply-chain traceability tool rather than a point-in-time compliance stamp.
